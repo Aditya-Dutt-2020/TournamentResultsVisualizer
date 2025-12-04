@@ -17,7 +17,7 @@ def main():
     st.title("📊 Survey Response Explorer")
     st.markdown("""
     Upload your CSV file to analyze responses. 
-    **Tip:** Click on any row in the table below to instantly view that person's full details.
+    **Tip:** Click on the checkbox to the left of a submission to instantly view that person's full details.
     """)
 
     # --- Sidebar: File Upload ---
@@ -79,14 +79,14 @@ def main():
         selection = st.session_state.response_grid.get("selection", {})
         if selection.get("rows"):
             st.session_state.selected_index = selection["rows"][0]
-            st.session_state.view_mode_selector = "Individual Detail View"
+            st.session_state.view_mode_selector = "Individual Student View"
 
     # --- Sidebar: Navigation ---
     st.sidebar.header("3. View Mode")
     
     view_mode = st.sidebar.radio(
         "Select View:", 
-        ["Overview & Sorting", "Individual Detail View", "Question Analysis View"], 
+        ["Overview & Sorting", "Individual Student View", "Question Analysis View"], 
         key="view_mode_selector"
     )
 
@@ -111,7 +111,7 @@ def main():
         )
 
     # --- Logic: Detail Mode ---
-    elif view_mode == "Individual Detail View":
+    elif view_mode == "Individual Student View":
         st.header("Individual Response Viewer")
         
         # Sidebar Selection for this mode
